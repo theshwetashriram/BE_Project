@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Expert Travel</title>
+    <link rel="icon" href="assets/images/flight.JPG">
+</head>
+
+<body>
+	<h2>List of Cities </h2>
+	<form method="post">
+		{{ form.hidden_tag() }}
+	
+		
+
+		<!-- 	<select name="state">
+			<option>Maharashtra</option>
+			<option>Rajasthan</option>
+			<option>Karnataka</option>
+			<option>Delhi</option>
+			<option>kerala</option>
+			<option>Himachal Pradesh</option>
+			<option>Uttrakhand</option>
+			<option>Jammu</option>
+			<option>Kashmir</option>
+			<option>Uttarpradesh</option>
+			<option>Hyderabad</option>
+			<option>Telangana</option>
+			<option>Jharkhand</option>
+			<option>Gujrat</option>
+			<option>Goa</option>
+			<option>Ooty</option>
+			<option>Punjab</option>
+			<option>Bihar</option>
+			<option>Madhyapradesh</option>
+			<option>Haryana</option>
+			<option>Chhattisgarh</option>
+			<option>West Bengal</option>
+			<option>Odisha</option>
+			<option>Assam</option>
+			<option>Sikkim</option>
+			<option>Nagalang</option>
+			<option>Sikkim</option>
+			<option>Tripura</option>
+			<option>Arunachal Pradesh</option>
+			<option>Manipur</option>
+			<option>Meghalay</option>
+			<option>Mizoram</option>
+		</select>
+		-->
+		{%for i in range(0, len)%}
+		<a href="/citydetails?id={{city[i][0]}}">{{city[i][1]}}</a><br/>
+		{%endfor%}
+         
+		<table>
+		<tr>
+		  <td>Add New city</td> 
+			<td><input type="text" name="name"><br></td>
+			<td><input type="submit" value="Add"></td>
+		</tr>
+		
+	</table>
+		
+</form>
+</body>
+
+</html>
