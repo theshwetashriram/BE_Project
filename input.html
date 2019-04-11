@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Input Preferences</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <script src="assets/js/jquery-1.11.2.min.js"></script>
+
+    <script>
+        $(document).ready(() => {
+            $('#btnaddcity').click(() => {
+                let cityname = $('#city').find('option:selected').text();
+                let cityid = $('#city').find('option:selected').val();
+
+                $('#selectedcities').append(new Option(cityname, cityid));
+            });
+
+            $('#btnremovecity').click(() => {
+                $('#selectedcities option:selected').remove();
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <form action="/search" method="POST">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Input Itinerary Preferences</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4">
+
+                    <h4>Home City</h4>
+                    <select name="homecity" class="form-control">
+                        {%for i in range(0, len)%}
+                        <option value="{{cities[i][0]}}">{{cities[i][1]}}</option>
+                        {%endfor%}
+                    </select>
+                    <h4>Cities to Visit</h4>
+                    <select id="city" class="form-control">
+                        {%for i in range(0, len)%}
+                        <option value="{{cities[i][0]}}">{{cities[i][1]}}</option>
+                        {%endfor%}
+                    </select>
+                    <button type="button" id="btnaddcity" class="btn btn-primary">Add</button>
+                </div>
+                <div class="col-xs-7">
+                    <div class="citylist">
+                        Selected Cities
+                        <select name="selectedcities" id="selectedcities" size="5" style="min-width: 200px" class="form-control">
+                        </select>
+                        <button type="button" id="btnremovecity" class="btn btn-danger">Remove</button>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <h4>Preferred Locations</h4>
+                {%for i in range(0, tagslen)%}
+                <input type="checkbox" name="location_tag" value="{{tags[i][0]}}">{{tags[i][0]}}<br />
+                {%endfor%}
+            </div>
+            <div class="row">
+                <h4>Budget</h4>
+                Min Budget <input type="number" name="minbudget" value="0" min="0" step="1000" class="form-control" />
+                Max Budget <input type="number" name="maxbudget" value="1000000" min="0" step="1000" class="form-control"/>
+            </div>
+            <div class="row">&nbsp;</div>
+            <div class="row">
+                <button class="btn btn-success" style="width: 100%">Find_Itineraries</button>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
